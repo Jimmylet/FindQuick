@@ -44,7 +44,7 @@ if ( sUser === "vagrant" ) {
             oDB
                 .dropDatabase()
                 .then( function() {
-                    return oDB.collection( "restaurant" ).insertMany( require( __dirname + "/_dev/database.json" ).map( fDataParser ) );
+                    return oDB.collection( "restaurants" ).insertMany( require( __dirname + "/_dev/database.json" ).map( fDataParser ) );
                 } )
                 .then( function() {
                     oDB.close();
