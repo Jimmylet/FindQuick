@@ -1,10 +1,7 @@
+import { send } from "../../core/utils/api";
+
 export default function( oRequest, oResponse ) {
     let sEcho = oRequest.query.echo || "hello, world!";
 
-    oResponse.send( {
-        "url": oRequest.url,
-        "timestamp": Date.now(),
-        "data": sEcho,
-        "error": false,
-    } );
+    send( oRequest, oResponse, sEcho );
 }
