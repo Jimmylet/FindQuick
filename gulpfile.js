@@ -29,9 +29,9 @@ if ( sUser === "vagrant" ) {
             }
 
             fDataParser = function( oElt ) {
-                oElt._id = new ObjectID( oElt._id.$oid );
-                if ( oElt.restaurant && oElt.restaurant.$oid ) {
-                    oElt.restaurant = new ObjectID( oElt.restaurant.$oid );
+                oElt._id = new ObjectID( oElt._id );
+                if ( oElt.restaurant && oElt.restaurant ) {
+                    oElt.restaurant = new ObjectID( oElt.restaurant );
                 }
                 oElt.created_at = new Date( oElt.created_at );
                 oElt.updated_at = new Date( oElt.updated_at );
