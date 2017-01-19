@@ -13,7 +13,7 @@ export default function ( oRequest, oResponse ) {
         iLongitude = +POST.longitude,
         sAddress = ( POST.address || "" ).trim(),
         sName = ( POST.name || "" ).trim(),
-        sSlug = ( POST.name ).replace(/\s+/g, '-').toLowerCase(),
+        sSlug = sName.replace(/\s+/g, '-').toLowerCase(),
         aHours = ( POST.hours || "" ),
         oPosition = checkPosition( iLatitude, iLongitude ),
         oRestaurant;
@@ -27,12 +27,12 @@ export default function ( oRequest, oResponse ) {
         "latitude": oPosition.latitude,
         "longitude": oPosition.longitude,
         "created_at": new Date(),
-        "updated_at": new Date()
+        "updated_at": new Date(),
     };
 
     sAddress && ( oRestaurant.address = sAddress );
     sName && ( oRestaurant.name = sName );
-    sSlug && ( oRestaurant.name = sSlug );
+    sSlug && ( oRestaurant.slug = sSlug );
     aHours && ( oRestaurant.hours = aHours );
 
     getRestaurants()
@@ -40,6 +40,7 @@ export default function ( oRequest, oResponse ) {
         .then( () => {
             send( oRequest, oResponse, {
                 "id": oRestaurant._id,
+                "slug": oRestaurant.slug || null,
                 "name": oRestaurant.name || null,
                 "address": oRestaurant.address || null,
                 "hours": oRestaurant.hours,
