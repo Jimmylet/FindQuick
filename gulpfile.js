@@ -29,7 +29,7 @@ if ( sUser === "vagrant" ) {
             }
 
             fDataParser = function( oElt ) {
-                oElt._id = new ObjectID( oElt._id );
+                oElt._id = new ObjectID();
                 if ( oElt.restaurant && oElt.restaurant ) {
                     oElt.restaurant = new ObjectID( oElt.restaurant );
                 }
