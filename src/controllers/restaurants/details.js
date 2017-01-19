@@ -3,24 +3,19 @@ import { send, error } from "../../core/utils/api";
 import { ObjectID } from "mongodb";
 import distance from "jeyo-distans";
 
+import checkPosition from "../../core/utils/position";
+
 
 export default function ( oRequest, oResponse ) {
 
     let sRestaurantID = ( oRequest.params.id || "" ).trim(),
-        iLatitude = +oRequest.query.latitude,
-        iLongitude = +oRequest.query.longitude,
         oCurrentPosition;
 
     if ( !sRestaurantID ) {
         error( oRequest, oResponse, "Invalid ID!", 400 );
     }
 
-    if ( !isNaN( iLatitude ) && !isNaN( iLongitude ) ) {
-        oCurrentPosition = {
-            "latitude": iLatitude,
-            "longitude": iLongitude,
-        };
-    }
+    oCurrentPosition = checkPosition( +oRequest.query.latitude, +oRequest.query.longitude );
 
     getRestaurants()
         .findOne( {
@@ -48,3 +43,4 @@ export default function ( oRequest, oResponse ) {
         })
         .catch( ( oError ) => error( oRequest, oResponse, oError ) );
 }
+
