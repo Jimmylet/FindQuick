@@ -29,6 +29,10 @@ fInit = function( iAppPort = APP_PORT ) {
         "extended": true,
     } ) );
 
+    // configure templates
+    oApp.set( "views", `${ __dirname }/../views` );
+    oApp.set( "view engine", "pug" );
+
     // routes
     oApp.use( systemRoutes );
     oApp.use( restaurantsRoutes );
