@@ -113,6 +113,6 @@ gulp.task( "watch", function() {
     gulp.watch( "static/modules/**/*.js", [ "modules" ] );
 } );
 
-gulp.task( "default", [ "build" ] );
+gulp.task( "default", [ "build", "views" ] );
 
 gulp.task( "work", [ "default", "watch" ] );
