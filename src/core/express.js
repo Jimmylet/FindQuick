@@ -6,6 +6,8 @@ import zouti from "zouti";
 
 import systemRoutes from "../routes/system";
 import restaurantsRoutes from "../routes/restaurants";
+import pagesRoutes from "../routes/pages";
+
 
 const APP_PORT = 12345;
 
@@ -30,6 +32,8 @@ fInit = function( iAppPort = APP_PORT ) {
     // routes
     oApp.use( systemRoutes );
     oApp.use( restaurantsRoutes );
+    oApp.use( pagesRoutes );
+
 
     // listening
     oApp.listen( iAppPort, () => {
