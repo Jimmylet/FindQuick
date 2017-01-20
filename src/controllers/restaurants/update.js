@@ -18,6 +18,8 @@ export default function( oRequest, oResponse ) {
         sAddress = ( POST.address || "" ).trim(),
         iLatitude = POST.latitude,
         iLongitude = POST.longitude,
+        sName = ( POST.name || "" ).trim(),
+        aHours = ( POST.hours || "" ),
         aModifications = [],
         oPosition;
 
@@ -59,13 +61,24 @@ export default function( oRequest, oResponse ) {
                 }
             }
 
-            // 3b. check address
+            // 3b. check values
             if ( sAddress ) {
                 oRestaurant.address = sAddress;
                 aModifications.push( "address" );
             }
 
-            // 3c. if bank changes, check bank
+            if ( sName ) {
+                oRestaurant.name = sName;
+                oRestaurant.slug = sName.replace(/\s+/g, '-').toLowerCase(),
+                aModifications.push( "name", "slug" );
+            }
+
+            if ( aHours ){
+                oRestaurant.hours = aHours;
+                aModifications.push( "hours" );
+            }
+
+            // 3c. checkRestaurant and push
             return checkRestaurant( sRestaurantID ).then( ( ) => {
                 let oModificationsToApply = {};
 
@@ -95,6 +108,4 @@ export default function( oRequest, oResponse ) {
             } );
         } )
         .catch( ( oError ) => error( oRequest, oResponse, oError ) );
-
-    // 4. apply modifications
 }
