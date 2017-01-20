@@ -22,7 +22,7 @@ export default function ( oRequest, oResponse ) {
             "_id": new ObjectID( sRestaurantID ),
             "deleted_at": null,
         } )
-        .then( ( { _id, name, latitude, longitude, address, hours } ) => {
+        .then( ( { _id, slug, name, latitude, longitude, address, hours } ) => {
 
             let oRestaurantData;
 
@@ -32,7 +32,7 @@ export default function ( oRequest, oResponse ) {
 
             oRestaurantData = {
                 "id": _id,
-                name, latitude, longitude, address, hours
+                slug, name, latitude, longitude, address, hours
             }
 
             if ( oCurrentPosition ){
