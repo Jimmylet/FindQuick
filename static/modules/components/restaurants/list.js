@@ -26,7 +26,7 @@ let oRestaurantsList = Vue.component( "restaurants-list", {
                     <router-link :to="'/' + elt.id">
                         <strong>{{ elt.name }}</strong>
                         <address>{{ elt.address }}</address>
-                        <span class="distance">{{ elt.distance }}m</span>
+                        <span class="distance">Se trouve à <span class="numero">{{ elt.distance }}m</span> de vous !</span>
                     </router-link>
                 </li>
             </ul>

@@ -18,6 +18,7 @@ let oApp = new Vue( {
         <div class="wrapper">
             <header>
                 <h1>Trouves ton Quick !</h1>
+                <span class="subtitle">Une petite faim? Viens dans le Quick le plus proche !</span>
             </header>
             <router-view></router-view>
             <footer>
