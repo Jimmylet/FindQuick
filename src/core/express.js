@@ -29,7 +29,7 @@ fInit = function( iAppPort = APP_PORT ) {
         "extended": true,
     } ) );
 
-    console.log( `${ __dirname }/../../static` );
+    // Routes static
     oApp.use( express.static( `${ __dirname }/../../static` ) );
 
 
