@@ -53,5 +53,3 @@ export default function( oRequest, oResponse ) {
         } )
         .catch( ( oError ) => error( oRequest, oResponse, oError ) );
 }
-
-

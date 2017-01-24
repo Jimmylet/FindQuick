@@ -24,7 +24,20 @@ export default function ( oRequest, oResponse ) {
         } )
         .then( ( { _id, slug, name, latitude, longitude, address, hours } ) => {
 
-            let oRestaurantData;
+            let oRestaurantData,
+                bOpen = false,
+                iCurrentDay = new Date().getDay(),
+                iCurrentHour = new Date().getHours() + ( new Date().getMinutes() / 60 );
+
+            if ( iCurrentDay === 0 ) {
+                iCurrentHour = 7;
+            }
+
+            if ( iCurrentHour >= hours[ iCurrentDay - 1 ][ 0 ] && iCurrentHour <= hours[ iCurrentDay - 1 ][ 1 ] ) {
+                bOpen = true;
+            }
+
+
 
             if ( !_id ){
                 return error ( oRequest, oResponse, "Unknown Restaurant", 404);
@@ -32,6 +45,7 @@ export default function ( oRequest, oResponse ) {
 
             oRestaurantData = {
                 "id": _id,
+                "open": bOpen,
                 slug, name, latitude, longitude, address, hours
             }
 

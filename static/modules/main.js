@@ -22,7 +22,7 @@ let oApp = new Vue( {
             </header>
             <router-view></router-view>
             <footer>
-                <a href="https://github.com/hepl-ria/kach">hepl-ria/kach</a>
+                <a href="https://github.com/jimmylet/findquick">jimmylet/findquick</a>
             </footer>
         </div>
     `,
