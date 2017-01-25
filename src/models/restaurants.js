@@ -5,8 +5,6 @@ import { ObjectID } from "mongodb";
 let fCheckRestaurant;
 
 
-
-
 fCheckRestaurant = function( sRestaurantID ) {
     let oRestaurantID;
 

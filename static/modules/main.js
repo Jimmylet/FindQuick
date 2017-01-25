@@ -6,14 +6,16 @@ import RestaurantsDetails from "./components/restaurants/details";
 
 Vue.use( VueRouter );
 
-let oRouter = new VueRouter( {
+let oRouter, oApp;
+
+oRouter = new VueRouter( {
     "routes": [
         { "path": "/", "component": RestaurantsList },
         { "path": "/:id", "component": RestaurantsDetails },
     ],
 } );
 
-let oApp = new Vue( {
+oApp = new Vue( {
     "template": `
         <div class="wrapper">
             <header>

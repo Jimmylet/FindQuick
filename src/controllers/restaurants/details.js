@@ -6,7 +6,7 @@ import distance from "jeyo-distans";
 import checkPosition from "../../core/utils/position";
 
 
-export default function ( oRequest, oResponse ) {
+export default function( oRequest, oResponse ) {
 
     let sRestaurantID = ( oRequest.params.id || "" ).trim(),
         oCurrentPosition;
@@ -40,22 +40,21 @@ export default function ( oRequest, oResponse ) {
 
 
 
-            if ( !_id ){
+            if ( !_id ) {
                 return error ( oRequest, oResponse, "Unknown Restaurant", 404);
             }
 
             oRestaurantData = {
                 "id": _id,
                 "open": bOpen,
-                slug, name, latitude, longitude, address, hours
-            }
+                slug, name, latitude, longitude, address, hours,
+            };
 
-            if ( oCurrentPosition ){
+            if ( oCurrentPosition ) {
                 oRestaurantData.distance = distance( oCurrentPosition, oRestaurantData ) * 1000;
             }
 
-            send ( oRequest, oResponse, oRestaurantData );
-        })
+            send( oRequest, oResponse, oRestaurantData );
+        } )
         .catch( ( oError ) => error( oRequest, oResponse, oError ) );
 }
-

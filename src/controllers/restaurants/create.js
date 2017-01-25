@@ -1,11 +1,10 @@
-import Promise from "bluebird";
 import { ObjectID } from "mongodb";
 
 import getRestaurants from "../../models/restaurants";
 import { send, error } from "../../core/utils/api";
 import checkPosition from "../../core/utils/position";
 
-export default function ( oRequest, oResponse ) {
+export default function( oRequest, oResponse ) {
 
     const POST = oRequest.body;
 
@@ -13,7 +12,7 @@ export default function ( oRequest, oResponse ) {
         iLongitude = +POST.longitude,
         sAddress = ( POST.address || "" ).trim(),
         sName = ( POST.name || "" ).trim(),
-        sSlug = sName.replace(/\s+/g, '-').toLowerCase(),
+        sSlug = sName.replace( /\s+/g, '-' ).toLowerCase(),
         aHours = ( POST.hours || "" ),
         oPosition = checkPosition( iLatitude, iLongitude ),
         oRestaurant;
@@ -47,6 +46,6 @@ export default function ( oRequest, oResponse ) {
                 "latitude": oRestaurant.latitude,
                 "longitude": oRestaurant.longitude,
             }, 201 );
-        })
+        } )
         .catch( ( oError ) => error( oRequest, oResponse, oError ) );
 }

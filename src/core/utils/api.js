@@ -9,7 +9,7 @@ fSend = function( oRequest, oResponse, oData = {}, iStatus = 200 ) {
     } );
 };
 
-fError = function( oRequest, oResponse, mError, iStatus = 500 )  {
+fError = function( oRequest, oResponse, mError, iStatus = 500 ) {
     oResponse.status( iStatus ).json( {
         "url": `[${ oRequest.method }] ${ oRequest.url }`,
         "timestamp": Date.now(),

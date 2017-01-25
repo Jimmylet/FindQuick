@@ -69,11 +69,11 @@ export default function( oRequest, oResponse ) {
 
             if ( sName ) {
                 oRestaurant.name = sName;
-                oRestaurant.slug = sName.replace(/\s+/g, '-').toLowerCase(),
+                oRestaurant.slug = sName.replace( /\s+/g, '-' ).toLowerCase();
                 aModifications.push( "name", "slug" );
             }
 
-            if ( aHours ){
+            if ( aHours ) {
                 oRestaurant.hours = aHours;
                 aModifications.push( "hours" );
             }
