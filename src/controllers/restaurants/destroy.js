@@ -6,12 +6,14 @@ export default function( oRequest, oResponse ) {
 
     let oRestaurantID;
 
+    // check ID
     try {
         oRestaurantID = new ObjectID( oRequest.params.id );
     } catch ( oError ) {
         return error( oRequest, oResponse, new Error( "Invalid ID!" ), 400 );
     }
 
+    // delete
     getRestaurants()
         .deleteOne( {
             "_id": oRestaurantID,

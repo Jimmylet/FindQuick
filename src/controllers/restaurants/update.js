@@ -42,7 +42,6 @@ export default function( oRequest, oResponse ) {
 
 
             // 3. check values
-
             // 3a. check position
             if ( iLatitude != null && iLongitude != null ) {
                 oPosition = checkPosition( +iLatitude, +iLongitude );

@@ -8,6 +8,7 @@ export default function( oRequest, oResponse ) {
 
     const POST = oRequest.body;
 
+    // get data from POST
     let iLatitude = +POST.latitude,
         iLongitude = +POST.longitude,
         sAddress = ( POST.address || "" ).trim(),
@@ -17,11 +18,12 @@ export default function( oRequest, oResponse ) {
         oPosition = checkPosition( iLatitude, iLongitude ),
         oRestaurant;
 
+    // check if position is valid
     if ( !oPosition ) {
         return error( oRequest, oResponse, "Invalid position", 400 );
     }
 
-
+    // store data
     oRestaurant = {
         "latitude": oPosition.latitude,
         "longitude": oPosition.longitude,
@@ -34,6 +36,8 @@ export default function( oRequest, oResponse ) {
     sSlug && ( oRestaurant.slug = sSlug );
     aHours && ( oRestaurant.hours = aHours );
 
+
+    // Create new data
     getRestaurants()
         .insertOne( oRestaurant )
         .then( () => {
