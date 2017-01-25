@@ -23,6 +23,8 @@ let oRestaurantDetail = Vue.component( "restaurant-details", {
             </div>
             <div v-if="loaded" class="wrap-details">
                 <h2>{{ restaurant.name }}</h2>
+                <strong  class="closed" v-if="!restaurant.open">Fermé</strong>
+                <strong class="open" v-if="restaurant.open">Ouvert</strong>
                 <address>{{ restaurant.address }}</address>
                 <span class="distance">Se trouve à <span class="numero">{{ restaurant.distance }}m</span> de vous !</span>
                 <div class="hours">

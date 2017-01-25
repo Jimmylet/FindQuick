@@ -25,8 +25,9 @@ let oRestaurantsList = Vue.component( "restaurants-list", {
                 <li v-for="elt in restaurants">
                     <router-link :to="'/' + elt.id">
                         <strong>{{ elt.name }}</strong>
+                        <p  class="is-open closed" v-if="!elt.open">Fermé</p>
+                        <p class="is-open open" v-if="elt.open">Ouvert</p>
                         <address>{{ elt.address }}</address>
-                        <span class="distance">Se trouve à <span class="numero">{{ elt.distance }}m</span> de vous !</span>
                     </router-link>
                 </li>
             </ul>
@@ -52,9 +53,21 @@ let oRestaurantsList = Vue.component( "restaurants-list", {
                 } )
                 .then( ( oResponse ) => {
 
-                    this.loaded = true;
-                    this.restaurants = oResponse.data;
+                    this.restaurants = oResponse.data.map( ( oRestaurant ) => {
+                        oRestaurant.open = false;
+                        reqwest( {
+                            "url": "/restaurants/" + oRestaurant.id,
+                            "method": "get",
+                            "data": {},
+                        } )
+                            .then( ( oResponse ) => {
+                                oRestaurant.open = oResponse.data.open;
+                            } )
+                            .catch( this.showError );
 
+                        return oRestaurant;
+                    } );
+                    this.loaded = true;
                 } )
                 .catch( this.showError );
         },
