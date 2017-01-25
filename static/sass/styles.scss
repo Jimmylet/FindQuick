@@ -73,6 +73,25 @@ header{
         letter-spacing: .7px;
         margin-bottom: 10px;
     }
+    .is-open{
+        float: right;
+        position: relative;
+        bottom: 27px;
+        display: inline-block;
+        padding: 13px 12px;
+        color: #fff;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        font-size: 13px;
+        line-height: 0;
+    }
+    .open{
+        background-color: #26A65B + 10%;
+    }
+    .closed{
+        background-color: #CF000F;
+    }
     address{
         font-style: italic;
         color: #404040;
@@ -147,6 +166,25 @@ header{
             padding-left: 30px;
             font-weight: normal;
             color: #0A1418;
+        }
+        strong{
+            float: right;
+            position: relative;
+            bottom: 27px;
+            display: inline-block;
+            padding: 13px 12px;
+            color: #fff;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-size: 13px;
+            line-height: 0;
+        }
+        .open{
+            background-color: #26A65B + 10%;
+        }
+        .closed{
+            background-color: #CF000F;
         }
     }
 }
