@@ -28,6 +28,7 @@ let oRestaurantsList = Vue.component( "restaurants-list", {
                         <p  class="is-open closed" v-if="!elt.open">Fermé</p>
                         <p class="is-open open" v-if="elt.open">Ouvert</p>
                         <address>{{ elt.address }}</address>
+                         <span class="distance">Se trouve à <span class="numero">{{ elt.distance }}m</span> de vous !</span>
                     </router-link>
                 </li>
             </ul>

@@ -4,7 +4,7 @@ import distance from "jeyo-distans";
 import checkPosition from "../../core/utils/position";
 
 const ARC_KILOMETER = 0.009259, // 1 décimale de lat/lng vaut X km.
-    DEFAULT_RADIUS = 15,
+    DEFAULT_RADIUS = 17,
     MAX_RADIUS = 100;
 
 export default function( oRequest, oResponse ) {

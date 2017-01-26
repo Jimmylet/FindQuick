@@ -28,7 +28,7 @@ export default function( oRequest, oResponse ) {
                 bOpen = false,
                 iCurrentDay = new Date().getDay(),
                 iCurrentHour = new Date().getHours() + 1 + ( new Date().getMinutes() / 60 ) ;
-                // +1 car le serveur va une heure en retard par rapport à nous
+            // +1 car le serveur va une heure en retard par rapport à nous
 
             if ( iCurrentDay === 0 ) {
                 iCurrentHour = 7;
